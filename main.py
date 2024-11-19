@@ -16,16 +16,16 @@ WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 
 # Настройки текста
-font = pygame.font.SysFont("Arial", 80)  # Шрифт и размер текста
-text = font.render("Picters", True, WHITE)  # Создаем текстовое изображение
+font = pygame.font.Font(pygame.font.get_default_font(), 120)  # Используем стандартный шрифт для современного вида
+text = font.render("Picters", True, WHITE)  # Создаем текстовое изображение с антиалиасингом
 
 text_width, text_height = text.get_size()  # Получаем размер текста для корректного отскакивания
 text_x = random.randint(0, screen_width - text_width)
 text_y = random.randint(0, screen_height - text_height)
 
 # Скорость движения текста
-speed_x = random.choice([3, -3])
-speed_y = random.choice([3, -3])
+speed_x = random.choice([4, -4])
+speed_y = random.choice([4, -4])
 
 # Настройки FPS
 clock = pygame.time.Clock()
@@ -37,7 +37,7 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    # Обновление позиции текста
+    # Обновление позиции текста с плавным движением
     text_x += speed_x
     text_y += speed_y
 
@@ -56,7 +56,7 @@ while running:
     # Обновляем экран
     pygame.display.flip()
 
-    # Устанавливаем FPS
+    # Устанавливаем FPS для плавного движения
     clock.tick(60)
 
 # Закрытие игры
